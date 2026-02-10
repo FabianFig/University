@@ -12,23 +12,42 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Ignore class files
-/bin/
-/out/
+# Ignore class files and build outputs
+bin/
+out/
+**/bin/
+**/out/
+**/target/
+*.class
 
 # Ignore IDE-specific files
 /.idea/
+**/.idea/
+/.vscode/
+**/.vscode/
 /.settings/
+**/.settings/
 /.classpath
+**/.classpath
 /.project
+**/.project
+*.iml
+*.iws
+*.ipr
 
 # Ignore logs and temporary files
 *.log
 *.tmp
+*.o
+*.out
+*.exe
+*.dSYM
+*.dSYM/
 
 # Ignore dependency directories (for Maven, Node, etc.)
 target/
 node_modules/
+**/.mvn/wrapper/maven-wrapper.jar
 
 # Ignore environment or sensitive configuration files
 .env
@@ -39,4 +58,3 @@ config.json
 rsa
 rsa_imp_Student
 rsa_imp_Student.dSYM
-bin
