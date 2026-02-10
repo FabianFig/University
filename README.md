@@ -1,4 +1,4 @@
-# University Projects
+# University Assignments/Projects
 
 This repository contains coursework projects organized by course folders.
 Each course folder includes a short README with context for the materials.
