@@ -1,10 +1,11 @@
 lexer grammar XMLLexer;
 
+
+SELF_CLOSING : '<' TAGNAME '/>' ;
 OPEN_TAG : '<' TAGNAME '>' ;
 CLOSE_TAG : '</' TAGNAME '>' ;
-SELF_CLOSING : '<' TAGNAME '/>' ;
 
-fragment TAGNAME : [a-z][a-z0-9_]* ;
+fragment TAGNAME : [a-z_][a-z0-9_]* ;
 
-TEXT : ~[<>\n\r\t ]+ ;
+TEXT : ~[<>]+ ;
 WS : [ \t\r\n]+ -> skip ;
