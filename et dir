@@ -1,0 +1,69 @@
+[33mae0a279[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Normalize folder naming conventions and add missing subfolder READMEs
+[33mddaea6e[m Reorganize Compiler Construction: rename PA1 folder, add PA2
+[33m04f8aa0[m Add files via upload
+[33mffca46c[m Remove accidentally committed Archive.zip
+[33m441eeb7[m Merge CompilerConstruction branch into main
+[33m98c77ae[m[33m ([m[1;32mCompilerConstruction[m[33m)[m FINISHED: assignment
+[33meecd397[m[33m ([m[1;31morigin/CompilerConstruction[m[33m)[m FINISHED: lexer. Started Driver.java logic
+[33m2e7e0b9[m ADD: files for Op-Systems: Assignment-2
+[33mbd09fce[m ADD: Assignment Files & first lexer additions
+[33m5fb6c31[m CHNGE: Title
+[33m7d52b23[m Add course READMEs with assignment details and enhance root README
+[33ma2c7ab4[m ADD: root README
+[33m7008625[m Reorganize repository: rename folders with hyphens, flatten Chrono structure, remove IDE artifacts, add course READMEs
+[33m6568748[m ADD: Final Project/App Files
+[33m0b0c1d3[m ADD: instructions and assignment code
+[33m96f5cbf[m Added lab4 files
+[33m13a52ae[m Add: Lab2 & Lab3 files
+[33m0dcea3b[m Added javadoc comments to each interface and class.
+[33m0b6f4db[m Added javadocumentation to AidShip class
+[33md07a47e[m Create README.md
+[33m79e020f[m updated .gitignore file
+[33m3c52197[m updated .gitignore file
+[33m2db7f2b[m Updated subfolder name
+[33mfd4289a[m Uploading Lab1
+[33md222b5d[m Uploaded lab_1 of Applications Programming
+[33m7b2af63[m Updated Final Neural PNG
+[33m26614d5[m Uploaded completed PDF
+[33m2e3a9aa[m Added second Hidden Layer
+[33m79cf7eb[m Completed neural network programme
+[33mc470ab2[m Added final project instructions and created finalNeuralNetwork file to be completed
+[33md7bb20d[m added completed Assignment-4 files
+[33mf682e8c[m Slight output formatting fixes
+[33m67d7dc6[m Removed uneccessary file(s)
+[33m1c2ecba[m Completed project 2
+[33ma99cafa[m Made various changes and completions to source code
+[33m5b6df9e[m updated code to handle fractions as user input rather than only decimals
+[33m46fb3b9[m Created project_2 folder and completed project_2's required programme
+[33mb53ff29[m Fixed BuffereReader
+[33mc615df1[m[33m ([m[1;31morigin/test_in_class[m[33m)[m Created more class files for Project_2
+[33mb3a7cd7[m Added Given Project Instructions to Project_2 dir
+[33mcbd631a[m Added Given Project Instructions to Project_2 dir
+[33m6251e3d[m Add instructions via upload
+[33m3ff82e0[m Added Project_2 file structure and source folder.
+[33m4e4e791[m Merge branch 'main' of https://github.com/FabianFig/University-Projects
+[33m0dbd734[m Updated Systems-Programming folder to current assignment submissions
+[33md143c64[m Updated .gitignore
+[33m70c0564[m added Math foundatios of CS project 1 pseudocode
+[33m1a118bc[m Removed unwanted files from Git tracking
+[33mf332f9d[m Add .gitignore to exclude unnecessary files
+[33m1285a4e[m Changed from using generics to a inheritance class. Completed programme/project. Output is as required with given test dataset.
+[33m755e111[m modified Movies.java and MusicAlbum.java
+[33mf9eed57[m Renamed Completed Applied Linear Algebra Project 1 doc
+[33m724d104[m Created file parser method within manager class
+[33m80da2c5[m removed redundant directory
+[33m2457367[m added constructors to movies class and added csv parser in manager class
+[33m385c49b[m Removed Redundant 'Foundations...' Folder
+[33mffb4bf9[m Renamed folder
+[33ma5bcac5[m Committing changes before renaming folder
+[33m834acfb[m Created necessary type classes, manager class, and driver class
+[33m9b3ee77[m Merge branch 'main' of https://github.com/FabianFig/University-Projects
+[33mf8b6fa2[m Edited File Structures
+[33mf6e6e93[m Rearranged file structure and created jave project
+[33m5be3937[m Added files via upload
+[33m638df7f[m Added Provided Project 1 Files
+[33mb579e4b[m Added file via upload
+[33md0e5d7b[m Added files via upload
+[33m1adc52a[m Added Project Files
+[33m04f64b3[m Updated .gitignore file
+[33m249bb0f[m Initial commit - added course directories

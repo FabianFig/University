@@ -1,61 +1,13 @@
-
-# Ignore virtual environments
-.venv/
-venv/
-
-# Ignore compiled Python files
+*.class
+*.o
+.DS_Store
 __pycache__/
 *.pyc
-*.pyo
-
-# Ignore OS-specific files
-.DS_Store
-Thumbs.db
-
-# Ignore class files and build outputs
-bin/
-out/
-**/bin/
-**/out/
-**/target/
-*.class
-
-# Ignore IDE-specific files
-/.idea/
-**/.idea/
-/.vscode/
-**/.vscode/
-/.settings/
-**/.settings/
-/.classpath
-**/.classpath
-/.project
-**/.project
-*.iml
-*.iws
-*.ipr
-
-# Ignore logs and temporary files
-*.log
-*.tmp
-*.o
-*.out
-*.exe
-*.dSYM
-*.dSYM/
-
-# Ignore dependency directories (for Maven, Node, etc.)
+.project
+.classpath
+*.interp
+*.tokens
 target/
-node_modules/
-**/.mvn/wrapper/maven-wrapper.jar
-
-# Ignore environment or sensitive configuration files
-.env
-config.json
-
-# Ignore in-class docs
-/in-class
-rsa
-rsa_imp_Student
-rsa_imp_Student.dSYM
+bin/
+.vscode/
 check-repo.fish
