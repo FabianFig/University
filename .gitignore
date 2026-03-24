@@ -58,3 +58,4 @@ config.json
 rsa
 rsa_imp_Student
 rsa_imp_Student.dSYM
+check-repo.fish
