@@ -1,0 +1,9 @@
+as n 12 
+as p 8 
+as c 0 
+rp n [ 
+    sc c 
+    rp p [ fd 100 rt 360/p ] 
+    rt 360/n 
+    as c c+1
+]

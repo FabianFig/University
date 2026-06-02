@@ -1,0 +1,33 @@
+1. It was just me.
+2. I do think part1 and part2 are completely correct. Part3 though works but only for the valid inputs.
+3. Part3 gives the right output and does match part2 when given the same params, but it doesn't validate that the BytesPerPage is a power of 2 so if an in invalid value is passed, the programme will just produce the incorrect output instead of an error.
+4. Part2 was a little tricky with the LRU implementation since I have to update the ordering on every single access, not just on eviction.
+5.
+Part1: 
+╭─ .../In-Progress/OperatingSystems/Assign3 at 00:31 
+╰─ ❯ md5sum part1-output
+ceabc02825a5b908e474b053074ab53c  part1-output
+
+Part2:
+╭─ .../In-Progress/OperatingSystems/Assign3 at 19:34 
+╰─ ❯ ./part2 part2sequence part2-output
+
+Ttl page faults: 3210
+
+╭─ .../In-Progress/OperatingSystems/Assign3 at 19:34 
+╰─ ❯ md5sum part2-output
+c95b27848ae8d4354d87678d075001f7  part2-output
+
+Part3:
+╭─ .../In-Progress/OperatingSystems/Assign3 at 19:47 
+╰─ ❯ ./part3 128 4096 1024 part2sequence part3-output
+Total page faults: 3210
+
+╭─ .../In-Progress/OperatingSystems/Assign3 at 19:47 
+╰─ ❯ md5sum part2-output part3-output
+c95b27848ae8d4354d87678d075001f7  part2-output
+c95b27848ae8d4354d87678d075001f7  part3-output
+
+╭─ .../In-Progress/OperatingSystems/Assign3 at 19:47 
+╰─ ❯ 
+

@@ -1,0 +1,60 @@
+
+.registers 8
+.memory 65536
+
+.code
+	cmp_LT r0, r_argc => r1
+	cbr r1 => haveArg, done
+
+haveArg:
+	load r_argv => r2
+	p_str r2
+
+	loadI 0 => r3
+	loadI 0 => r5
+
+loop:
+	cloadAO r2, r3 => r4
+	cmp_EQ r4, r5 => r1
+	cbr r1 => printSwitched, checkUpperLow
+
+checkUpperLow:
+	loadI 65 => r6
+	cmp_GE r4, r6 => r7
+	cbr r7 => checkUpperHigh, checkLowerLow
+
+checkUpperHigh:
+	loadI 90 => r6
+	cmp_LE r4, r6 => r7
+	cbr r7 => makeLower, checkLowerLow
+
+makeLower:
+	addI r4, 32 => r4
+	cstoreAO r4 => r2, r3
+	jumpI => nextChar
+
+checkLowerLow:
+	loadI 97 => r6
+	cmp_GE r4, r6 => r7
+	cbr r7 => checkLowerHigh, nextChar
+
+checkLowerHigh:
+	loadI 122 => r6
+	cmp_LE r4, r6 => r7
+	cbr r7 => makeUpper, nextChar
+
+makeUpper:
+	subI r4, 32 => r4
+	cstoreAO r4 => r2, r3
+
+nextChar:
+	addI r3, 1 => r3
+	jumpI => loop
+
+printSwitched:
+	p_str r2
+
+done:
+	halt
+
+

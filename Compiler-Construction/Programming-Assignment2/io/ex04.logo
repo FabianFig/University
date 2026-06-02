@@ -1,0 +1,9 @@
+pu bk 200 pd 
+as w 6
+rp 4 [ 
+    wd w
+    as h 12+6*w
+    lt 90 fd h bk 2*h
+    pu fd h rt 90 fd 32+2*w pd
+    as w 2*w 
+]

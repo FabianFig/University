@@ -1,0 +1,7 @@
+workflow "Tree Demo"
+on push
+
+job "lint"
+  runs_on ubuntu-latest
+  steps
+    run "echo hi"

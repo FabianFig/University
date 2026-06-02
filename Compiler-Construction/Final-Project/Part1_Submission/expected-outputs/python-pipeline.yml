@@ -1,0 +1,20 @@
+name: Python Pipeline
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip install flake8
+      - run: flake8 src/
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip install -r requirements.txt
+      - run: pytest tests/
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip install -r requirements.txt
+      - run: python deploy.py

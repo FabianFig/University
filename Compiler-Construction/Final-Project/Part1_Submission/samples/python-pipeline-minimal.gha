@@ -1,0 +1,22 @@
+workflow "Python Pipeline"
+on push, pull_request
+
+job "lint"
+  runs_on ubuntu-latest
+  steps
+    run "pip install flake8"
+    run "flake8 src/"
+
+job "test"
+  needs "lint"
+  runs_on ubuntu-latest
+  steps
+    run "pip install -r requirements.txt"
+    run "pytest tests/"
+
+job "deploy"
+  needs "test"
+  runs_on ubuntu-latest
+  steps
+    run "pip install -r requirements.txt"
+    run "python deploy.py"

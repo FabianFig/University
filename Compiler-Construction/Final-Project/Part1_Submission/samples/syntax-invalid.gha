@@ -1,0 +1,9 @@
+// this file contains syntax errors to test parser error reporting.
+// missing quotes around workflow name.
+workflow Python Pipeline
+on push
+
+job "lint"
+  runs_on ubuntu-latest
+  steps
+    run "echo test"

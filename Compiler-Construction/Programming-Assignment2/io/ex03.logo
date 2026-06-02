@@ -1,0 +1,10 @@
+as n 6 
+pu bk 200 pd 
+rp 3 [ 
+    rp n [ 
+        rp 4 [ fd 60 rt 90 ] 
+        rt 360/n 
+    ] 
+    pu fd 200 pd 
+    as n 2*n 
+]

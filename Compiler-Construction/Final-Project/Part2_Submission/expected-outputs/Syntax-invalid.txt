@@ -1,0 +1,10 @@
+**GitHub Actions DSL Compiler**
+Input: samples/syntax-invalid.gha
+
+**Lexical Analysis**
+Tokenisation: OK
+
+**Syntactic Analysis (Parsing)**
+ERROR: 3:9: mismatched input 'Pipeline' expecting {STR} [SYNTAX]
+
+(compilation halted — parse tree could not be constructed)

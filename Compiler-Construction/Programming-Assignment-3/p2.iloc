@@ -1,0 +1,56 @@
+.registers 16
+.memory 65536
+
+.code
+    loadI 1024 => r3
+    loadI 0 => r1
+    loadI 0 => r2
+
+argLoop:
+    cmp_LT r2, r_argc => r4
+    cbr r4 => argBody, argsDone
+
+argBody:
+    multI r2, 8 => r5
+    add r_argv, r5 => r5
+    load r5 => r6
+    is_i r6 => r7
+    cbr r7 => argValid, argNext
+
+argValid:
+    atoi r6 => r8
+    multI r1, 8 => r9
+    add r3, r9 => r10
+    store r8 => r10
+    addI r1, 1 => r1
+
+argNext:
+    addI r2, 1 => r2
+    jumpI => argLoop
+
+argsDone:
+    loadI 0 => r2
+    loadI 0 => r11
+    multI r1, 8 => r9
+    add r3, r9 => r12
+
+sumLoop:
+    cmp_LT r2, r1 => r4
+    cbr r4 => sumBody, dump
+
+sumBody:
+    multI r2, 8 => r9
+    add r3, r9 => r10
+    load r10 => r8
+    add r11, r8 => r11
+    add r12, r9 => r10
+    store r11 => r10
+    addI r2, 1 => r2
+    jumpI => sumLoop
+
+dump:
+    loadI 1024 => r13
+    multI r1, 16 => r14
+    add r13, r14 => r15
+    d_mem r13, r15
+    halt

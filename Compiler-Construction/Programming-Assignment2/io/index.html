@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Logo Gallery</title>
+<style>
+table { border-collapse: collapse; }
+td { vertical-align: top; padding: 10px; border: 1px solid #ccc; }
+pre { margin: 0; }
+</style>
+</head>
+<body>
+<table>
+<tr>
+<td><pre>
+fd 60 + 8 - 4
+rt 90 fd 131 % 66 - 1
+rt 90 fd (14+2)
+*(5+3)         -(24+40)
+rt 90
+fd (8*8)+(16/4)-(7%3)*4
+</pre></td>
+<td><img src="ex01.svg" width="480"></td>
+</tr>
+<tr>
+<td><pre>
+as n 8 
+as a 0 
+rp n [ 
+    ifz a%2 [
+        sc 0 rp 4 [fd 100 rt 90] 
+    ] [
+        sc 1 rp 6 [ fd 100 rt 60] 
+    ] 
+    as a a+1 rt 360 / n
+] 
+</pre></td>
+<td><img src="ex02.svg" width="480"></td>
+</tr>
+<tr>
+<td><pre>
+as n 6 
+pu bk 200 pd 
+rp 3 [ 
+    rp n [ 
+        rp 4 [ fd 60 rt 90 ] 
+        rt 360/n 
+    ] 
+    pu fd 200 pd 
+    as n 2*n 
+]
+</pre></td>
+<td><img src="ex03.svg" width="480"></td>
+</tr>
+<tr>
+<td><pre>
+pu bk 200 pd 
+as w 6
+rp 4 [ 
+    wd w
+    as h 12+6*w
+    lt 90 fd h bk 2*h
+    pu fd h rt 90 fd 32+2*w pd
+    as w 2*w 
+]
+</pre></td>
+<td><img src="ex04.svg" width="480"></td>
+</tr>
+<tr>
+<td><pre>
+as n 12 
+as p 8 
+as c 0 
+rp n [ 
+    sc c 
+    rp p [ fd 100 rt 360/p ] 
+    rt 360/n 
+    as c c+1
+]
+</pre></td>
+<td><img src="ex05.svg" width="480"></td>
+</tr>
+</table>
+</body>
+</html>

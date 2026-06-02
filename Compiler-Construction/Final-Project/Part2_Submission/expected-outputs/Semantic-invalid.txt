@@ -1,0 +1,27 @@
+**GitHub Actions DSL Compiler**
+Input: samples/semantic-invalid.gha
+
+**Lexical Analysis**
+Tokenisation: OK
+
+**Syntactic Analysis (Parsing)**
+Parse tree construction: OK
+
+**AST Construction**
+AST construction: OK
+Workflow name: Build and Deploy
+Events: [push, invalid_event]
+Jobs: 6
+
+**Semantic Checks**
+Semantic analysis: OK
+
+**Findings**
+WARNING: 1:0: Unknown trigger event: "invalid_event"
+ERROR: 20:0: Duplicate job name: "test"
+ERROR: 20:0: Job "test" references undefined job in needs: "nonexistent"
+ERROR: 26:0: Job "deploy" references undefined job in needs: "undefined_job"
+ERROR: 32:0: Circular dependency detected: circular_a -> circular_b -> circular_a
+WARNING: 28:4: Potentially dangerous command detected: "rm -rf /var/www/*" contains "rm -rf"
+
+Compilation: FAILED (errors present — no YAML generated)

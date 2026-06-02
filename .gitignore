@@ -1,8 +1,11 @@
 *.class
 *.o
+*.out
+*.jar
 .DS_Store
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
 .project
 .classpath
 *.interp
@@ -10,4 +13,10 @@ __pycache__/
 target/
 bin/
 .vscode/
+*.log
+*.aux
+*.toc
+*.synctex.gz
+*.tmp
+*.bak
 check-repo.fish

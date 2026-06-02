@@ -1,0 +1,10 @@
+as n 8 
+as a 0 
+rp n [ 
+    ifz a%2 [
+        sc 0 rp 4 [fd 100 rt 90] 
+    ] [
+        sc 1 rp 6 [ fd 100 rt 60] 
+    ] 
+    as a a+1 rt 360 / n
+] 

@@ -1,0 +1,143 @@
+// register allocation
+// r0 points to first (lowest) byte in the current activation record. (ARP)
+// r1 points to first (highest) byte AFTER the end of the current activation record. 
+// r2 scratch register except when used to set parameter and to return result from called subroutine. 
+// r3 scratch register.
+
+
+//    AR structure
+//   
+// 
+//    |                   |   <--- r1
+//    +-------------------+
+//    |   register #n-1   |
+//    .       ...         .
+//    .       ...         .
+//    |    register #0    |
+//    +-------------------+
+//    |  return address   | <--- r0
+//    +-------------------+
+//    |     param #1      |
+//    .       ...         .
+//    .       ...         .
+//    |     param #n      |
+//    +-------------------+
+//    |                   |
+
+
+.registers 8
+
+.define WORD            8    // number of bytes in a word
+
+.define O_RA            0    // offset (relative to r0) where r_ra is saved.
+.define O_R0            8    // offset (relative to r0) where R0 is saved.
+.define O_R1           16    
+.define O_R2           24    // saved, but never restored (r2 holds result) 
+.define O_R3           32    
+.define O_R4           40     
+.define O_R5           48     
+.define O_R6           56     
+.define O_R7           64
+.define O_NEXTR1       72   // size of AR. r1 will be O_NEXTR1 bytes away from r0.
+
+.define NO_P1            8   // convenience defines. parameter #1 offset (in the -ve)
+.define NO_P2           16   // convenience defines. parameter #2 offset (in the -ve)
+.define NO_P3           24   // convenience defines. parameter #3 offset (in the -ve)
+
+
+.define LOWSTACK 0x0400     // address of beginning of syscall stack.
+.define RESERVED      0     // number of words reserved on STACK for syscall routines. (not used as of now)
+
+.code
+
+    jsr sc_init           // called once at beginning of program
+    
+    jsr sc_prep_for_main  // move CLA as parameters 
+
+    loadI main => r2      // get ready to call main()
+    jsr sc_call
+    p_int r2
+  halt
+
+//   ---   ---   ---   ---   ---   ---   ---   ---   ---   //
+
+sc_prep_for_main:
+    i2i r_argc => r5      
+    i2i r_argv => r6      
+    subI r5, 1 => r4      
+    
+L_check_args:
+    cmp_LT r4, 0 => r7
+    cbr r7 => L_args_done, L_process_arg
+    
+L_process_arg:
+    multI r4, ?WORD => r7
+    loadAO r6, r7 => r7   
+    
+    is_i r7 => r2
+    cbr r2 => L_arg_ok, L_arg_fail
+    
+L_arg_fail:
+    p_prompt "Run-time error: CLA is not an integer\n"
+    halt
+
+L_arg_ok:
+    atoi r7 => r7
+    storeAI r7 => r1, 0
+    addI r1, ?WORD => r1
+    
+    subI r4, 1 => r4
+    jumpI => L_check_args
+
+L_args_done:
+    ret r_ra
+
+
+//   ---   ---   ---   ---   ---   ---   ---   ---   ---   //
+
+sc_call:
+        // save return address in (future) AR
+    storeAI r_ra => r1, ?O_RA 
+  
+        // save registers
+    storeAI r0 => r1, ?O_R0
+    storeAI r1 => r1, ?O_R1
+    storeAI r2 => r1, ?O_R2 // unnecessary, but doing it anyway
+    storeAI r3 => r1, ?O_R3
+    storeAI r4 => r1, ?O_R4
+    storeAI r5 => r1, ?O_R5
+    storeAI r6 => r1, ?O_R6
+    storeAI r7 => r1, ?O_R7
+
+        // move r0, r1 to corresponding AR
+    i2i r1 => r0
+    addI r0, ?O_NEXTR1 => r1
+
+        // jump into sub-program      
+    loadI sc_call_resume => r_ra
+
+    ret r2 // address of subprogram is passed in r2. this ret acts as a direct jump.
+
+
+sc_call_resume:
+
+        // recall registers, but don't touch r2 (result is in r2)
+      loadAI r0, ?O_RA => r_ra 
+      loadAI r0, ?O_R1 => r1
+      loadAI r0, ?O_R3 => r3
+      loadAI r0, ?O_R4 => r4
+      loadAI r0, ?O_R5 => r5
+      loadAI r0, ?O_R6 => r6
+      loadAI r0, ?O_R7 => r7
+      loadAI r0, ?O_R0 => r0
+  ret r_ra 
+
+
+sc_init: 
+        // reserve space @beginning of stack for sc_ routine(s) stuff
+    loadI ?RESERVED => r1
+    multI r1, ?WORD => r1
+    addI r1, ?LOWSTACK => r1
+        // r1 now points to the beginning of (next) activation. 
+    loadI 0 => r0
+  ret r_ra

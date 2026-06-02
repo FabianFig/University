@@ -1,0 +1,42 @@
+// this file is syntax-valid but semantically-invalid
+// demonstrates various semantic errors the analyser catches
+
+workflow "Build and Deploy"
+on push, invalid_event
+
+job "build"
+  runs_on ubuntu-latest
+  steps
+    run "npm install"
+    run "npm build"
+
+job "test"
+  needs "build"
+  runs_on ubuntu-latest
+  steps
+    run "npm test"
+
+job "test"
+  needs "nonexistent"
+  runs_on ubuntu-latest
+  steps
+    run "echo duplicate name"
+
+job "deploy"
+  needs "undefined_job"
+  runs_on ubuntu-latest
+  steps
+    run "rm -rf /var/www/*"
+    run "deploy.sh"
+
+job "circular_a"
+  needs "circular_b"
+  runs_on ubuntu-latest
+  steps
+    run "echo a"
+
+job "circular_b"
+  needs "circular_a"
+  runs_on ubuntu-latest
+  steps
+    run "echo b"

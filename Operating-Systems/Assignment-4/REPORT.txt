@@ -1,0 +1,261 @@
+Part 1:
+
+Output (5 threads):
+
+Fabian Figueroa Assignment 4: # of threads = 5
+This is philosopher 0
+This is philosopher 1
+This is philosopher 2
+This is philosopher 3
+This is philosopher 4
+5 threads have been completed/joined successfully!
+
+Output (20 threads):
+
+Fabian Figueroa Assignment 4: # of threads = 20
+This is philosopher 0
+This is philosopher 1
+This is philosopher 2
+This is philosopher 3
+This is philosopher 4
+This is philosopher 5
+This is philosopher 6
+This is philosopher 7
+This is philosopher 8
+This is philosopher 9
+This is philosopher 10
+This is philosopher 11
+This is philosopher 12
+This is philosopher 13
+This is philosopher 14
+This is philosopher 15
+This is philosopher 16
+This is philosopher 17
+This is philosopher 18
+This is philosopher 19
+20 threads have been completed/joined successfully!
+
+pthread_join() usage:
+
+In creatPhilosophers(), after allof the threads are created, a second loop calls
+pthread_join() on each thread handle. This will block the main thread until
+each philosopher thread finishes. All threads must complete before the
+function prints the completion message and returns.
+
+
+Part2: 
+
+Output (5 threads):
+
+Fabian Figueroa Assignment 4: # of threads = 5
+Philosopher #0: starts thinking
+Philosopher #1: starts thinking
+Philosopher #2: starts thinking
+Philosopher #3: starts thinking
+Philosopher #4: starts thinking
+Philosopher #2: ends thinking
+Philosopher #2: starts eating
+Philosopher #0: ends thinking
+Philosopher #0: starts eating
+Philosopher #4: ends thinking
+Philosopher #3: ends thinking
+Philosopher #1: ends thinking
+Philosopher #2: ends eating
+Philosopher #0: ends eating
+Philosopher #1: starts eating
+Philosopher #4: starts eating
+Philosopher #1: ends eating
+Philosopher #4: ends eating
+Philosopher #3: starts eating
+Philosopher #3: ends eating
+
+Output (20 threads):
+
+Fabian Figueroa Assignment 4: # of threads = 20
+Philosopher #0: starts thinking
+Philosopher #1: starts thinking
+Philosopher #2: starts thinking
+Philosopher #3: starts thinking
+Philosopher #4: starts thinking
+Philosopher #5: starts thinking
+Philosopher #6: starts thinking
+Philosopher #7: starts thinking
+Philosopher #8: starts thinking
+Philosopher #9: starts thinking
+Philosopher #10: starts thinking
+Philosopher #11: starts thinking
+Philosopher #12: starts thinking
+Philosopher #13: starts thinking
+Philosopher #14: starts thinking
+Philosopher #15: starts thinking
+Philosopher #16: starts thinking
+Philosopher #17: starts thinking
+Philosopher #18: starts thinking
+Philosopher #19: starts thinking
+Philosopher #1: ends thinking
+Philosopher #1: starts eating
+Philosopher #17: ends thinking
+Philosopher #17: starts eating
+Philosopher #11: ends thinking
+Philosopher #11: starts eating
+Philosopher #1: ends eating
+Philosopher #9: ends thinking
+Philosopher #9: starts eating
+Philosopher #12: ends thinking
+Philosopher #4: ends thinking
+Philosopher #4: starts eating
+Philosopher #18: ends thinking
+Philosopher #7: ends thinking
+Philosopher #7: starts eating
+Philosopher #0: ends thinking
+Philosopher #0: starts eating
+Philosopher #3: ends thinking
+Philosopher #11: ends eating
+Philosopher #12: starts eating
+Philosopher #4: ends eating
+Philosopher #3: starts eating
+Philosopher #13: ends thinking
+Philosopher #0: ends eating
+Philosopher #12: ends eating
+Philosopher #13: starts eating
+Philosopher #8: ends thinking
+Philosopher #3: ends eating
+Philosopher #13: ends eating
+Philosopher #2: ends thinking
+Philosopher #2: starts eating
+Philosopher #14: ends thinking
+Philosopher #14: starts eating
+Philosopher #16: ends thinking
+Philosopher #5: ends thinking
+Philosopher #5: starts eating
+Philosopher #10: ends thinking
+Philosopher #9: ends eating
+Philosopher #10: starts eating
+Philosopher #14: ends eating
+Philosopher #6: ends thinking
+Philosopher #5: ends eating
+Philosopher #15: ends thinking
+Philosopher #10: ends eating
+Philosopher #19: ends thinking
+Philosopher #19: starts eating
+Philosopher #17: ends eating
+Philosopher #16: starts eating
+Philosopher #7: ends eating
+Philosopher #8: starts eating
+Philosopher #6: starts eating
+Philosopher #6: ends eating
+Philosopher #2: ends eating
+Philosopher #19: ends eating
+Philosopher #18: starts eating
+Philosopher #18: ends eating
+Philosopher #8: ends eating
+Philosopher #16: ends eating
+Philosopher #15: starts eating
+Philosopher #15: ends eating
+
+Deadlock count (100 runs): 0
+
+Deadlock is still technically possible I believe in my implementation? It will happen when
+every philosopher picks up their left chopstick at the same time, leaving
+all right chopsticks unavailable and creating a circular wait. The short
+random sleep times make this window narrow, so it was not observed in
+100 runs, but the code does not technically prevent it.
+
+
+Part 3:
+
+Output (5 threads):
+
+Fabian Figueroa Assignment 4: # of threads = 5
+Philosopher #0: starts thinking
+Philosopher #1: starts thinking
+Philosopher #2: starts thinking
+Philosopher #3: starts thinking
+Philosopher #4: starts thinking
+Philosopher #2: ends thinking
+Philosopher #0: ends thinking
+Philosopher #0: starts eating
+Philosopher #3: ends thinking
+Philosopher #1: ends thinking
+Philosopher #0: ends eating
+Philosopher #1: starts eating
+Philosopher #4: ends thinking
+Philosopher #1: ends eating
+Philosopher #2: starts eating
+Philosopher #2: ends eating
+Philosopher #3: starts eating
+Philosopher #3: ends eating
+Philosopher #4: starts eating
+Philosopher #4: ends eating
+
+No deadlock observed across 10 runs.
+
+My condition var design:
+
+A single mutex (orderMutex) and condition var (orderCond) control
+eating order. The integer nextIndex starts at 0 and tracks whose turn it is.
+
+After thinking, philosopher i locks orderMutex and waits in a while loop
+until nextIndex == i:
+
+    pthread_mutex_lock(&orderMutex);
+    while (nextIndex != philosopher)
+        pthread_cond_wait(&orderCond, &orderMutex);
+
+pthread_cond_wait atomically releases the mutex and suspends the thread.
+When a philosopher finishes eating, it increments nextIndex and calls
+pthread_cond_broadcast() to wake all waiting threads, then unlocks:
+
+    nextIndex++;
+    pthread_cond_broadcast(&orderCond);
+    pthread_mutex_unlock(&orderMutex);
+
+All woken threads recheck the while condition. Only the one where
+nextIndex == i proceeds; the rest go back to sleep. The while loopis necessary because broadcast wakes everyone and spurious wakeups are also possible.
+
+
+Part 4:
+
+Output (5 threads):
+
+Fabian Figueroa Assignment 4: # of threads = 5
+Philosopher #0: starts thinking
+Philosopher #1: starts thinking
+Philosopher #2: starts thinking
+Philosopher #3: starts thinking
+Philosopher #4: starts thinking
+Philosopher #2: ends thinking
+Philosopher #2: starts eating
+Philosopher #0: ends thinking
+Philosopher #0: starts eating
+Philosopher #1: ends thinking
+Philosopher #3: ends thinking
+Philosopher #0: ends eating
+Philosopher #4: ends thinking
+Philosopher #4: starts eating
+Philosopher #4: ends eating
+Philosopher #2: ends eating
+Philosopher #3: starts eating
+Philosopher #3: ends eating
+Philosopher #1: starts eating
+Philosopher #1: ends eating
+
+No deadlock seen across 20 runs.
+
+Deadlock prevention:
+
+Deadlock requires hold-and-wait: a thread holds one resource while
+blocking on another. pthread_mutex_trylock() breaks this by returning
+immediately if the lock is unavailable instead of blocking. If a philosopher gets the left chopstick but trylock fails on the right, it immediately releases the left and backs off for a random interval
+before retrying. Since no thread ever blocks while holding a chopstick,
+hold-and-wait cannot occur and deadlock is impossible. The random backoff will also prevent when all philosophers retry
+in lockstep and never make progress.
+
+
+Collaborators: 0
+
+Correctness: I believe everything is correct. All four parts compiled
+without warnings and produced the expected output. Part 2 did not
+deadlock in 100 runs (theoretically possible but not observed). Part 3
+enforced strict eating order in all 10 runs. Part 4 avoided deadlock in
+all 20 runs. I did my best using the explanation in the Dinosaur book.
