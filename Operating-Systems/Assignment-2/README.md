@@ -1,2 +1,9 @@
 # Assignment 2
-Virtual memory address translation in C. Page table with 1K physical / 4K virtual memory and 128-byte pages.
+Process scheduling simulator in C implementing FCFS, SJF, PSJF, and Round Robin algorithms.
+
+## Highlights
+
+- `assign2.c`: main driver running all four scheduling algorithms with a quantum argument.
+- `pslibrary.c` / `pslibrary.h`: scheduler implementations.
+- `runall-5.c` / `sm-proto-1.c`: helper prototypes and runs.
+- `assign2-scheduling-2.pdf`: assignment description.

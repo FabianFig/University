@@ -10,7 +10,8 @@ Systems programming coursework covering C implementations of core operating-syst
 
 - Assignment-1: C program for binary addresses with assignment PDF.
 - Assignment-2: Process scheduling simulator. Implements FCFS, SJF, PSJF, and Round Robin scheduling algorithms.
-- Assignment-3: Virtual memory and page replacement simulator.
+- Assignment-3: Virtual memory address translation simulator with page table management and LRU page replacement.
+- Assignment-4: Multithreaded Dining Philosophers implementation with deadlock avoidance.
 
 ## Run / Build
 

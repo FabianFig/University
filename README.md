@@ -6,10 +6,9 @@ This repository collects coursework organized by course folder. Each course dire
 
 - [Applications-Programming](Applications-Programming): Java and JavaFX labs plus a final app project.
 - [Applied-Linear-Algebra](Applied-Linear-Algebra): Python projects for numerical methods, PageRank, and a neural-network final project.
-- [Artificial-Intelligence](Artificial-Intelligence): Placeholder course folder for artificial intelligence work.
-- [Compiler-Construction](Compiler-Construction): ANTLR, compiler, and code-generation assignments, including the Nickle ILOC work.
-- [Computer-Architecture](Computer-Architecture): Architecture and reverse-engineering coursework.
-- [Cloud-Computing](Cloud-Computing): Placeholder course folder for cloud computing work.
+- [Artificial-Intelligence](Artificial-Intelligence): Notebook-based AI work covering search, game playing, ML, and deep learning.
+- [Compiler-Construction](Compiler-Construction): ANTLR, compiler, and code-generation assignments, including the Nickle ILOC work.- [Computer-Architecture](Computer-Architecture): Architecture and reverse-engineering coursework.
+- [Cloud-Computing](Cloud-Computing): Docker, Docker Compose, and AWS S3 coursework plus a Flask/MongoDB group project.
 - [Database-Systems](Database-Systems): Database systems coursework and exercises.
 - [Data-Structures](Data-Structures): Data structures coursework and assignments.
 - [Data-Science](Data-Science): Notebook-based data science assignments and a final project.
@@ -18,7 +17,7 @@ This repository collects coursework organized by course folder. Each course dire
 - [Mathematical-Foundations-of-Computer-Science](Mathematical-Foundations-of-Computer-Science): Proofs, theory, and related project work.
 - [Operating-Systems](Operating-Systems): Systems programming and OS assignments.
 - [Systems-Programming](Systems-Programming): Linux, shell, text-processing, and process-control assignments.
-- [Web-Technologies](Web-Technologies): Placeholder folder for web technologies work.
+- [Web-Technologies](Web-Technologies): HTML, CSS, JavaScript, PHP, and MySQL homework exercises.
 
 ## Conventions
 
