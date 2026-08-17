@@ -1,0 +1,46 @@
+{#
+ some of the sources I have found for this
+  https://jinja.palletsprojects.com/en/stable/templates/#if
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
+#}
+
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>{{ "Edit Task" if task else "New Task" }}</h2>
+
+  <form method="post">
+    <label>
+      Title<br>
+      <input name="title" value="{{ task.title if task else '' }}" required>
+    </label>
+    <br><br>
+
+    <label>
+      Description<br>
+      <textarea name="description">{{ task.description if task else '' }}</textarea>
+    </label>
+    <br><br>
+
+    <label>
+      Status<br>
+      <select name="status">
+        {% for s in statuses %}
+          <option value="{{ s }}" {% if task and task.status == s %}selected{% endif %}>
+            {{ s }}
+          </option>
+        {% endfor %}
+      </select>
+    </label>
+    <br><br>
+
+    <label>
+      Deadline<br>
+      <input type="date" name="deadline" value="{{ task.deadline if task else '' }}">
+    </label>
+    <br><br>
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}
