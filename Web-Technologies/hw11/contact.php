@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fabian's Contact Page.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div class="site-shell">
+        <header class="site-header" id="top">
+            <div class="brand-bar">
+                <h1>Welcome to my Website!</h1>
+            </div>
+
+            <nav class="site-nav" aria-label="Main">
+                <a href="index.html">Home</a>
+                <a href="hobbies.html">Hobbies</a>
+                <a href="school.html">School</a>
+                <a href="work.html">Work</a>
+                <a href="contact.php" class="active" aria-current="page">Contact</a>
+            </nav>
+        </header>
+
+        <main class="site-main">
+            <section class="page-panel hero-panel">
+                <div class="content-card">
+                    <h2 class="page-title">Fill out the contact form below</h2>
+                    <?php
+                        if (isset($_GET['err'])) {
+                            if ($_GET['err'] == "notSubmitted") {
+                                echo '<div class="alert alert-danger">Error: Do not load results.php directly — submit the form.</div>';
+                            } else {
+                                echo '<div class="alert alert-danger">Error: ' . htmlspecialchars($_GET['err']) . '</div>';
+                            }
+                        }
+                    ?>
+                    <form method="post" action="results.php">
+                        <div class="form-group" id="unGroup">
+                            <label class="control-label" for="username">Create a username:</label>
+                            <input type="text" class="form-control" id="username" name="userName" placeholder="Enter Username">
+                            <div class="help-block" id="unFeedback"></div>
+                        </div>
+                        <div class="form-group" id="firstNameGroup">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter first name">
+                        </div>
+                        <div class="form-group" id="lastNameGroup">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter last name">
+                        </div>
+                        <div class="form-group" id="pwGroup">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="passWord" placeholder="Enter Password">
+                            <div class="help-block" id="pwFeedback"></div>
+                        </div>
+                        <button class="btn btn-success" type="submit" name="submit" value="submit">Sign Up!</button>
+                    </form>
+                </div>
+
+                <figure class="content-card photo-card">
+                    <h3>Statue of Lenin (Found near UTSA Data Science)</h3>
+                    <img src="assets/images/20260408_0032.png" alt="Photo of the new UTSA San Pedro building"
+                        title="Vladimir Lenin Statue near DT UTSA Campus" width="400">
+                </figure>
+            </section>
+
+            <a class="back-to-top" href="#top">Back to Top</a>
+        </main>
+    </div>
+</body>
+</html>

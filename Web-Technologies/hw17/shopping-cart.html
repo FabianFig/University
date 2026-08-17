@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shopping Cart</title>        
+        <!-- external stylesheets -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+
+    <body class="shopping-cart-body">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- shopping list panel container -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Shopping List Items: <span id="itemCount">0</span></h3>
+                    </div>
+
+                    <!-- list items container -->
+                    <div class="panel-body" id="shoppingList">
+                    </div>
+                    
+                    <!-- item entry form footer -->
+                    <div class="panel-footer">
+                        <div class="form-group">
+                            <label class="control-label" for="itemName">Item Name:</label>
+                            <input class="form-control" type="text" id="itemName" placeholder="Enter item name...">
+                        </div>
+                        <button id="addToList" class="btn btn-primary" type="button">Add Item</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- shopping cart script -->
+        <script src="assets/js/shopping-cart.js"></script>
+    </body>
+</html>
