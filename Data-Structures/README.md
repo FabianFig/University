@@ -6,6 +6,10 @@ Course materials and assignments for Data Structures.
 
 Placeholder for data structures coursework and assignment material.
 
+## Status
+
+Placeholder — course from a past semester; content not added yet.
+
 ## Folder Map
 
 - No assignments added yet.

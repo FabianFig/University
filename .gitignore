@@ -20,4 +20,3 @@ bin/
 *.synctex.gz
 *.tmp
 *.bak
-check-repo.fish

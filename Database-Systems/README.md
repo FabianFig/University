@@ -6,6 +6,10 @@ Course materials and assignments for Database Systems.
 
 Placeholder for database systems coursework and project material.
 
+## Status
+
+Placeholder — course from a past semester; content not added yet.
+
 ## Folder Map
 
 - No assignments added yet.

@@ -6,6 +6,10 @@ Course materials and assignments for Design and Analysis of Algorithms.
 
 Algorithm design, analysis, and proof-oriented coursework will live here.
 
+## Status
+
+Placeholder — course from a past semester; content not added yet.
+
 ## Folder Map
 
 - No assignments added yet.
